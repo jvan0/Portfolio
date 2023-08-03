@@ -1,13 +1,15 @@
-import Home from './components/Home'
-import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Navbar from './pages/Navbar'
+import Skills from './pages/Skills'
 
 const App = () => {
   return (
-    <div className='mx-auto w-full'>
-      <div className='App bg-hero bg-contain bg-center bg-no-repeat bg-cover bg-darky bg-40'>
+    <div className='mx-auto w-full bg-dark'>
+      <div className='App bg-darky bg-40 bg-hero bg-cover bg-center bg-no-repeat'>
         <Navbar />
         <Home />
       </div>
+      <Skills />
     </div>
   )
 }
