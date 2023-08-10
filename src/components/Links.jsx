@@ -8,7 +8,7 @@ const Links = () => {
   return (
     <>
       <a
-        href='#contact'
+        href='https://wa.me/+5492302691205'
         className='btn rounded-full border-2 border-dark bg-slate-300 py-2 px-2 hover:bg-white'
       >
         <FontAwesomeIcon icon={faPhone} className='-rotate-90 px-1 opacity-80' />

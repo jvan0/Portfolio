@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react'
+import { Squash as Hamburger } from 'hamburger-react'
 const Navbar = () => {
   const navbarMenu = [
     {
       name: 'Home',
-      link: '#'
+      link: '#',
     },
     {
-      name: 'Skills',
-      link: '#skills'
+      name: 'About Me',
+      link: '#skills',
     },
     {
       name: 'Proyects',
-      link: '#proyects'
+      link: '#proyects',
     },
     {
       name: 'Contact',
-      link: '#contact'
-    }
+      link: '#contact',
+    },
   ]
   const [color, setColor] = useState(false)
+  const [isOpen, setOpen] = useState(false)
 
   useEffect(() => {
     const changeColor = () => {
@@ -32,23 +34,41 @@ const Navbar = () => {
   }, [])
 
   return (
-    <div className={color
-      ? 'bg-darkest flex sticky top-0 items-center justify-between px-10 py-6 ease-in duration-500'
-      : 'bg-transparent flex sticky top-0 items-center justify-between px-10 py-6 ease-in duration-500'}>
-      <div className="flex gap-x-20 justify-between">
-        <a href="/" className='flex items-center gap-x-4'>
-          <span className='font-roboto-slab text-white text-2xl font-extrabold'>{'</>'}</span>
-          <span className='font-roboto text-white font-semibold lg:text-base xl:text-xl'> Juan Cassou</span>
+    <div
+      className={
+        color
+          ? 'sticky top-0 flex items-center justify-between bg-darkest px-10 py-6 duration-500 ease-in'
+          : 'sticky top-0 flex items-center justify-between bg-transparent px-10 py-6 duration-500 ease-in'
+      }
+    >
+      <div className='flex justify-between gap-x-20'>
+        <a href='/' className='flex items-center gap-x-4'>
+          <span className='font-roboto-slab text-2xl font-extrabold text-slate-300 hover:text-white'>
+            {'</>'}
+          </span>
+          <span className='font-roboto font-semibold text-slate-300 hover:text-white lg:text-base xl:text-xl'>
+            {' '}
+            Juan Cassou
+          </span>
         </a>
+      </div>
+      <div className='lg:hidden'>
+        <Hamburger toggled={isOpen} toggle={setOpen} color='#fff' easing='ease-in' rounded />
+      </div>
+      <div className='items-center gap-x-12 font-roboto font-semibold text-white/80 lg:flex lg:hidden lg:text-base xl:text-xl'>
+        {navbarMenu.map((menu, i) => (
+          <a href={menu.link} key={i} className='hover:text-white'>
+            {menu.name}
+          </a>
+        ))}
       </div>
       <div className='hidden items-center gap-x-12 font-roboto font-semibold text-white/80 lg:flex lg:text-base xl:text-xl'>
         {navbarMenu.map((menu, i) => (
           <a href={menu.link} key={i} className='hover:text-white'>
             {menu.name}
           </a>
-
         ))}
-        </div>
+      </div>
     </div>
   )
 }
